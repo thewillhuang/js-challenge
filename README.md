@@ -1,1 +1,42 @@
-# js-challenge
+# ReactJS-Challenge
+
+### Purpose
+The purpose of this exercise is for you to demonstrate your ability to create a performant application that both matches a mock (shown above) in features and functionality. We use this challenge to better understand your coding abilities and determine if you would be a good fit for an in-person interview.
+
+### What we're looking for
+- Proficiency in leveraging existing technologies to create a responsive application.
+- Ability to use CSS, HTML, and Javascript to match a mock design.
+- Logical code architecture and choice of frameworks.
+
+### Challenge
+Create an app that takes the user input with a form and then displays the results in a table. It should meet the following requirements.
+- Clicking the +Add button should open a modal window.
+- The form should be filled out and submitted from the modal window.
+- Upon submission, the table should update itself without needing to reload the page.
+- The form & table should have the following fields:
+  - `First Name`
+  - `Last Name  `
+  - `Date of Birth`
+  - `Phone Number`
+  - `Address`
+  - `Notes`
+
+### Bonus Points
+These are not required, but would be great additions if time permits.
+- Implement a method to persist the created data.
+- Make an Impressive UI
+- Full-Test Coverage
+- Suggested technologies (Webpack, React, Redux, React-Router)
+
+### Other
+To begin this challenge, please clone this repo and create a Pull Request into the repo when you are finished. You will only have 2 days to complete the challenge, so prioritize accordingly. Please add details for running you app to the `Running My App (README.md)` section below.
+
+### FAQ's
+Not all of the images & icons were included, what should I do?
+- Any missing assets can be improvised.
+
+The challenge requirements seem vague, am I missing something?
+- This prompt is designed to be open-ended, so feel free to be creative in the areas that lack strict guidelines.
+
+# Running My App (README.md)
+--- Insert your readme here ---
