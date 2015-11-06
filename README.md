@@ -1,4 +1,4 @@
-# ReactJS-Challenge
+# JS-Challenge
 
 ### Purpose
 The purpose of this exercise is for you to demonstrate your ability to create a performant application that both matches a mock (shown above) in features and functionality. We use this challenge to better understand your coding abilities and determine if you would be a good fit for an in-person interview.
@@ -24,9 +24,10 @@ Create an app that takes the user input with a form and then displays the result
 ### Bonus Points
 These are not required, but would be great additions if time permits.
 - Implement a method to persist the created data.
-- Make an Impressive UI
 - Full-Test Coverage
-- Suggested technologies (Webpack, React, Redux, React-Router)
+- Filter the Table Results from the Search
+- Add Sortable Columns to the table
+- Suggested Technologies (Webpack, React, Redux, React-Router)
 
 ### Other
 To begin this challenge, please clone this repo and create a Pull Request into the repo when you are finished. You will only have 2 days to complete the challenge, so prioritize accordingly. Please add details for running you app to the `Running My App (README.md)` section below.
