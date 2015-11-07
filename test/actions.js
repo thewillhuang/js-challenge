@@ -20,8 +20,8 @@ describe('actions', () => {
   it('should construct addContact action', () => {
     expect(addContact({test: 1})).to.eql({
       type: CREATE_CONTACT,
-      contact: {test: 1}},
-    );
+      contact: {test: 1},
+    });
   });
 
   it('should construct updateContact action', () => {
