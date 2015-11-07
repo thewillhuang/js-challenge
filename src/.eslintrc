@@ -1,0 +1,11 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "jsx-quotes": [2, "prefer-single"],
+  },
+  "ecmaFeatures": {
+    "modules": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "rules": {
+    "new-cap": 0,
+    "camelcase": [2, {"properties": "always"}],
+    "func-names": 0
+  }
+}

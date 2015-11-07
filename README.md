@@ -47,3 +47,15 @@ The challenge requirements seem vague, am I missing something?
 
 # Running My App (README.md)
 --- Insert your readme here ---
+
+### install
+```bash
+$ nvm install 5
+$ nvm use 5
+$ npm install
+```
+
+### test
+```bash
+$ npm run test
+```

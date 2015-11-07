@@ -1,0 +1,18 @@
+// bourbon
+@import 'bourbon';
+@import 'neat';
+
+// reset
+@import '../bower_components/normalize.css/normalize';
+
+// variables
+@import 'base/variables';
+
+// default css
+@import 'components/tableStyle';
+
+// file paths for fontawesome and simple-line-icons
+$fa-font-path: "../../bower_components/font-awesome/fonts/" !default;
+$simple-line-font-path: "../../bower_components/simple-line-icons/fonts/" !default;
+@import '../bower_components/font-awesome/scss/font-awesome';
+@import '../bower_components/simple-line-icons/scss/simple-line-icons';
