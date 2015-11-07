@@ -109,7 +109,7 @@
     "version": "node -v",
     "bower": "bower install --config.interactive=false",
     "start": "node index",
-    "test": "mocha --compilers js:babel-core/register --require ./test/helper.js --recursive",
+    "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {

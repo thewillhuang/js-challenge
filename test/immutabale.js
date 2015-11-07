@@ -1,6 +1,10 @@
 'use strict';
 import {expect} from 'chai';
 import {List, Map, fromJS} from 'immutable';
+import chaiImmutable from 'chai-immutable';
+import chai from 'chai';
+chai.use(chaiImmutable);
+
 
 describe('immutability', () => {
   describe('a number', () => {
