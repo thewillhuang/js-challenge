@@ -59,3 +59,9 @@ $ npm install
 ```bash
 $ npm run test
 ```
+
+### production
+```bash
+$ npm run production
+$ npm run start
+```

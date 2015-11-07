@@ -1,18 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-
+import { store } from './store.js';
+import { Provider } from 'react-redux';
+import { Root } from './components/app.jsx';
 const rootElement = document.getElementById('root');
 
-const Root = React.createClass({
-  render() {
-    return (
-      <div>
-        hello
-      </div>
-    );
-  },
-});
-
 render((
-  <Root />
+  <Provider store={store}>
+    <Root/>
+  </Provider>
 ), rootElement);

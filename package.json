@@ -30,6 +30,7 @@
     "react-addons-transition-group": "^0.14.2",
     "react-addons-update": "^0.14.2",
     "react-dom": "^0.14.2",
+    "react-redux": "^4.0.0",
     "react-responsive": "0.0.10",
     "react-router": "1.0.0-rc4",
     "react-tap-event-plugin": "^0.2.1",
@@ -105,10 +106,10 @@
     "deploy": "gulp deploy",
     "development": "NODE_ENV='development' gulp",
     "production": "NODE_ENV='production' gulp build:production",
-    "postinstall": "npm run version && npm run bower && npm run development",
+    "postinstall": "npm run version && npm run bower && npm run test && npm run development",
     "version": "node -v",
     "bower": "bower install --config.interactive=false",
-    "start": "node index",
+    "start": "node server",
     "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch"
   },
@@ -123,6 +124,9 @@
   },
   "homepage": "https://github.com/thewillhuang/js-challenge#readme",
   "babel": {
-    "presets": ["es2015", "react"]
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
