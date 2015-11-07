@@ -20,7 +20,10 @@ Create an app that takes the user input with a form and then displays the result
   - `Phone Number`
   - `Address`
   - `Notes`
-
+##### Application Mock
+![Application Mock](/assets/ContactsKeeper-01.png)
+##### Modal Mock
+![Modal Mock](/assets/ContactsKeeper-02.png)
 ### Bonus Points
 These are not required, but would be great additions if time permits.
 - Implement a method to persist the created data.
