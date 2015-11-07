@@ -50,7 +50,23 @@ describe('reducers', () => {
       ]));
     });
 
-    it('filterBy action should filter the current state by name', () => {
+    it('filterBy action should filter the current state by name in addition to keeping the previous state', () => {
+      state = addressBookApp(state, filterBy('william'));
+      const expectedSignature = fromJS([
+        {
+          test: 1,
+          day: 'sunny',
+          fName: 'william',
+          beforeFilter: [
+            {test: 1, day: 'sunny', fName: 'william'},
+            {test: 2, day: 'rainy'},
+          ],
+        },
+      ]);
+      expect(state).to.equal(expectedSignature);
+    });
+
+    it('filterBy action should use the previous state to return the new filter result', () => {
       state = addressBookApp(state, filterBy('william'));
       const expectedSignature = fromJS([
         {

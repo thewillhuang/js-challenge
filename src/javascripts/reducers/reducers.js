@@ -22,12 +22,19 @@ export function addressBookApp(state = INITIAL_STATE, action) {
     return state.delete(action.index);
 
   case FILTER:
-    const filtered = state.filter((map) => {
-      return (map.get('fName') === action.query);
+    let beforeFilter;
+    state.map(v => {
+      if (v.has('beforeFilter')) {
+        beforeFilter = v.get('beforeFilter');
+      }
     });
 
-    return filtered.map(v => {
-      return v.set('beforeFilter', state);
+    const filtered = state.filter((value) => {
+      return (value.get('fName') === action.query);
+    });
+
+    return filtered.map(obj => {
+      return obj.set('beforeFilter', beforeFilter || state);
     });
 
   case SET_ADDRESSBOOK:
