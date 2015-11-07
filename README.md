@@ -1,15 +1,15 @@
 # JS-Challenge
 
 ### Purpose
-The purpose of this exercise is for you to demonstrate your ability to create a performant application that both matches a mock (shown above) in features and functionality. We use this challenge to better understand your coding abilities and determine if you would be a good fit for an in-person interview.
+The purpose of this exercise is for you to demonstrate your ability to create a performant React application that both matches a mock (shown above) in features and functionality. We use this challenge to better understand your coding abilities and determine if you would be a good fit for an in-person interview.
 
 ### What we're looking for
 - Proficiency in leveraging existing technologies to create a responsive application.
 - Ability to use CSS, HTML, and Javascript to match a mock design.
-- Logical code architecture and choice of frameworks.
+- Logical code architecture and choice of frameworks (within the context of React).
 
 ### Challenge
-Create an app that takes the user input with a form and then displays the results in a table. It should meet the following requirements.
+Create a React app that takes the user input with a form and then displays the results in a table. It should meet the following requirements.
 - Clicking the +Add button should open a modal window.
 - The form should be filled out and submitted from the modal window.
 - Upon submission, the table should update itself without needing to reload the page.
