@@ -9,5 +9,18 @@
 }
 
 body {
-  color: 'white';
+  height: 100%;
+  font-family: $helvetica;
+  background-color: white;
 }
+
+html, body{
+  min-height: 100%;
+}
+
+// colors
+$procoreOrange: #F58025;
+$procoreBlue: #216FB5;
+$procoreGrey: #676767;
+$procoreLightGrey: #E7E7E7;
+$procoreModalShadow: rgba(#000000, 0.1);

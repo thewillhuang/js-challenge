@@ -1,3 +1,3 @@
 import { createStore } from 'redux';
-import { addressBookApp } from './reducers/reducers.js';
-export const store = createStore(addressBookApp);
+import { reducer } from './reducers/reducers.js';
+export const store = createStore(reducer);

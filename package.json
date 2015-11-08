@@ -110,7 +110,7 @@
     "version": "node -v",
     "bower": "bower install --config.interactive=false",
     "start": "node server",
-    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test": "mocha --compilers js:babel-core/register 'test/**/*.@(js|jsx)'",
     "test:watch": "npm run test -- --watch"
   },
   "repository": {

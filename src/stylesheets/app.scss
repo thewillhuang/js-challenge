@@ -8,12 +8,12 @@
 // variables
 @import 'base/variables';
 
-// default css
+// component scss
 @import 'components/tableStyle';
 @import 'components/_addressBook';
 
 // file paths for fontawesome and simple-line-icons
 $fa-font-path: "../../bower_components/font-awesome/fonts/" !default;
-$simple-line-font-path: "../../bower_components/simple-line-icons/fonts/" !default;
 @import '../bower_components/font-awesome/scss/font-awesome';
-@import '../bower_components/simple-line-icons/scss/simple-line-icons';
+// $simple-line-font-path: "../../bower_components/simple-line-icons/fonts/" !default;
+// @import '../bower_components/simple-line-icons/scss/simple-line-icons';

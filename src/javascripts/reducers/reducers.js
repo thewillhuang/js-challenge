@@ -10,7 +10,7 @@ import {
 } from '../actions/actions.js';
 export const INITIAL_STATE = new List();
 
-export function addressBookApp(state = INITIAL_STATE, action) {
+export function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
   case CREATE_CONTACT:
     return state.push(fromJS(action.contact));
@@ -21,21 +21,25 @@ export function addressBookApp(state = INITIAL_STATE, action) {
   case DELETE_CONTACT:
     return state.delete(action.index);
 
-  case FILTER:
-    let beforeFilter;
-    state.map(v => {
-      if (v.has('beforeFilter')) {
-        beforeFilter = v.get('beforeFilter');
-      }
-    });
-
-    const filtered = state.filter((value) => {
-      return (value.get('fName') === action.query);
-    });
-
-    return filtered.map(obj => {
-      return obj.set('beforeFilter', beforeFilter || state);
-    });
+  // case FILTER:
+  //   let originalState;
+  //   state.map(v => {
+  //     if (v.has('originalState')) {
+  //       originalState = v.get('originalState');
+  //     }
+  //   });
+  //
+  //   const filtered = state.filter((value) => {
+  //     const firstName = value.get('fName');
+  //     if (firstName) {
+  //       return (value.get('fName').toLowerCase().indexOf(action.query.toLowerCase()) >= 0);
+  //     }
+  //     return false;
+  //   });
+  //
+  //   return filtered.map(obj => {
+  //     return obj.set('originalState', originalState || state);
+  //   });
 
   case SET_ADDRESSBOOK:
     return fromJS(action.payload);

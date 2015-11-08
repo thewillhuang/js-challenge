@@ -1,19 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import Header from './header.jsx';
+import Footer from './footer.jsx';
+import Body from './body.jsx';
 
-const App = React.createClass({
+export const Root = React.createClass({
   render() {
-    console.log(this.props);
     return (
-      <div>
-        hello
+      <div className='appBase'>
+        <Header/>
+        <Body/>
+        <Footer/>
       </div>
     );
   },
 });
-
-function select(state) {
-  return {state};
-}
-
-export const Root = connect(select)(App);
