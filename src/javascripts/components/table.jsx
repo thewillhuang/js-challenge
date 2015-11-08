@@ -1,7 +1,6 @@
 import React from 'react';
 import {Table, Column} from 'fixed-data-table';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 function returnHeight() {
@@ -17,7 +16,6 @@ const DisplayTable = React.createClass({
 
   componentDidMount: function() {
     window.onresize = this.resize;
-    this.filterRowsBy(this.props.query);
   },
 
   getInitialState: function() {
@@ -34,20 +32,21 @@ const DisplayTable = React.createClass({
     );
   },
 
-  filterRowsBy: function() {
-    const query = this.props.query;
-    const filtered = this.props.state.filter((value) => {
-      const firstName = value.get('fName');
-      if (firstName && query) {
-        return (value.get('fName').toLowerCase().indexOf(query.toLowerCase()) >= 0);
-      }
-      return true;
-    });
-
-    this.setState({
-      filteredRows: filtered.toJS(),
-    });
-  },
+  // filterRowsBy: function() {
+  //   console.log('called filterRows');
+  //   const query = this.props.query;
+  //   const filtered = this.props.state.filter((value) => {
+  //     const firstName = value.get('fName');
+  //     if (firstName && query) {
+  //       return (value.get('fName').toLowerCase().indexOf(query.toLowerCase()) >= 0);
+  //     }
+  //     return true;
+  //   });
+  //
+  //   this.setState({
+  //     filteredRows: filtered.toJS(),
+  //   });
+  // },
 
   resize: function() {
     this.setState({
@@ -62,17 +61,16 @@ const DisplayTable = React.createClass({
   },
 
   rowGetter: function(rowIndex) {
-    return _.values(this.state.filteredRows[rowIndex]);
+    return this.props.state.get(rowIndex).toArray();
   },
 
   render() {
-    // console.log(this.props);
     return (
       <div className='tableBody'>
         <Table
           rowHeight={35}
           rowGetter={this.rowGetter}
-          rowsCount={this.state.filteredRows.length}
+          rowsCount={this.props.state.size}
           width={this.state.w}
           height={this.state.h}
           headerHeight={35}>

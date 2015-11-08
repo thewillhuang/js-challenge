@@ -6,7 +6,7 @@ const AddButton = React.createClass({
   },
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className='addButton' onClick={this.props.handleClick}>
           <button type='submit' className='addButtonSize' style={{backgroundColor: this.props.color, border: this.props.color}}>
