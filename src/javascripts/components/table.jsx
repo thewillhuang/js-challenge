@@ -27,7 +27,7 @@ const DisplayTable = React.createClass({
 
   componentDidMount: function() {
     window.onresize = this.resize;
-    if (local.length !== 0) {
+    if (local) {
       this.props.dispatch(setAddressBook(JSON.parse(localStorage.getItem('contacts'))));
     }
   },
