@@ -15,6 +15,14 @@ const Modal = React.createClass({
     dispatch: React.PropTypes.func.isRequired,
   },
 
+  componentDidMount: function() {
+    window.addEventListener('keydown', this.handleKeyDown);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('keydown', this.handleKeyDown);
+  },
+
   clearState: function() {
     this.setState({
       firstName: '',
@@ -72,6 +80,19 @@ const Modal = React.createClass({
     this.props.dispatch(addContact(this.state));
     this.clearState();
     this.props.closeModal();
+  },
+
+  handleKeyDown: function(event) {
+    switch (event.keyCode) {
+    case 27:
+      this.props.closeModal();
+      break;
+    case 13:
+      this.handleSubmit();
+      break;
+    default:
+      break;
+    }
   },
 
   render() {

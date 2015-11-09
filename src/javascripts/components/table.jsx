@@ -30,12 +30,13 @@ const DisplayTable = React.createClass({
     return {
       w: returnWidth(),
       h: returnHeight(),
-      sortBy: 'firstName',
+      sortBy: 0,
       sortDir: 1,
     };
   },
 
   headerRender: function(label, cellDataKey) {
+    // console.log(label);
     return (
       <div className='tableHeader' onClick={this.sortBy.bind(null, cellDataKey)}>{label}</div>
     );
@@ -65,7 +66,7 @@ const DisplayTable = React.createClass({
   },
 
   sortBy: function(key) {
-    console.log(key);
+    // console.log(key);
     const keyMap = {
       0: 'firstName',
       1: 'lastName',
@@ -75,14 +76,16 @@ const DisplayTable = React.createClass({
       5: 'notes',
     };
 
-    if (this.state.sortDir === 1) {
+    if (this.state.sortDir === 0) {
       this.setState({
-        sortDir: 0,
+        sortDir: 1,
+        sortBy: key,
       });
       this.props.dispatch(sortAscBy(keyMap[key]));
     } else {
       this.setState({
-        sortDir: 1,
+        sortDir: 0,
+        sortBy: key,
       });
       this.props.dispatch(sortDecBy(keyMap[key]));
     }
@@ -99,7 +102,14 @@ const DisplayTable = React.createClass({
   },
 
   render() {
-    console.log(this.props);
+    let sortDir = '';
+    if (this.state.sortDir) {
+      sortDir = ' ↓';
+    } else {
+      sortDir = ' ↑';
+    }
+    // console.log(this.props);
+    // console.log(this.state);
     return (
       <div className='tableBody'>
         <Table
@@ -112,7 +122,7 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label='First Name'
+          label={'First Name' + (this.state.sortBy === 0 ? sortDir : '')}
           width={100}
           flexGrow={1}
           dataKey={0}
@@ -120,7 +130,7 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label='Last Name'
+          label={'Last Name' + (this.state.sortBy === 1 ? sortDir : '')}
           width={100}
           flexGrow={1}
           dataKey={1}
@@ -128,7 +138,7 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label='Date of Birth'
+          label={'Date of Birth' + (this.state.sortBy === 2 ? sortDir : '')}
           width={80}
           flexGrow={1}
           dataKey={2}
@@ -136,7 +146,7 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label='Phone Number'
+          label={'Phone Number' + (this.state.sortBy === 3 ? sortDir : '')}
           width={80}
           flexGrow={2}
           dataKey={3}
@@ -144,7 +154,7 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label='Address'
+          label={'Address' + (this.state.sortBy === 4 ? sortDir : '')}
           width={150}
           flexGrow={1}
           dataKey={4}
@@ -152,7 +162,7 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label='Notes'
+          label={'Notes' + (this.state.sortBy === 5 ? sortDir : '')}
           width={200}
           flexGrow={3}
           dataKey={5}
