@@ -91,6 +91,8 @@ const Modal = React.createClass({
   },
 
   handleDelete: function() {
+    this.clearState();
+    this.props.closeModal();
     this.props.dispatch(setAddressBook([]));
     localStorage.clear();
   },
