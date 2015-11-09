@@ -10,12 +10,22 @@ const Search = React.createClass({
     dispatch: React.PropTypes.func.isRequired,
   },
 
+  getInitialState: function() {
+    return {
+      valueLength: 0,
+    };
+  },
+
   handleChange: function(event) {
     const query = event.target.value;
-    if (query.length >= 1) {
+    this.setState({
+      valueLength: query.length,
+    });
+    if (query.length >= this.state.valueLength) {
       this.props.dispatch(filterBy(event.target.value));
     } else {
       this.props.dispatch(setAddressBook(JSON.parse(localStorage.getItem('contacts'))));
+      this.props.dispatch(filterBy(event.target.value));
     }
   },
 

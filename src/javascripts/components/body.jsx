@@ -37,7 +37,6 @@ const Body = React.createClass({
   getInitialState: function() {
     return {
       modalDisplay: 'none',
-      searchQuery: '',
       searchColor: procoreBlue,
       addButtonColor: procoreBlue,
       searchMagColor: 'white',
