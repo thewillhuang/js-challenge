@@ -19,10 +19,6 @@ const Modal = React.createClass({
     window.addEventListener('keydown', this.handleKeyDown);
   },
 
-  componentDidUpdate: function() {
-    this.firstName.focus();
-  },
-
   componentWillUnmount: function() {
     window.removeEventListener('keydown', this.handleKeyDown);
   },
