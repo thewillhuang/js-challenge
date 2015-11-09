@@ -4,14 +4,14 @@ import {
   CREATE_CONTACT,
   UPDATE_CONTACT,
   DELETE_CONTACT,
-  // FILTER,
+  FILTER,
   SET_ADDRESSBOOK,
   SORT_ASC,
   SORT_DEC,
   addContact,
   updateContact,
   deleteContact,
-  // filterBy,
+  filterBy,
   sortAscBy,
   sortDecBy,
   setAddressBook} from '../src/javascripts/actions/actions.js';
@@ -39,12 +39,12 @@ describe('actions', () => {
     });
   });
 
-  // it('should construct filterBy action', () => {
-  //   expect(filterBy('william')).to.eql({
-  //     type: FILTER,
-  //     query: 'william',
-  //   });
-  // });
+  it('should construct filterBy action', () => {
+    expect(filterBy('william')).to.eql({
+      type: FILTER,
+      query: 'william',
+    });
+  });
 
   it('should construct setAddressBook action', () => {
     expect(setAddressBook({
