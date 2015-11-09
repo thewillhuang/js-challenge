@@ -5,19 +5,19 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {
   sortAscBy,
   sortDecBy,
+  setAddressBook,
 } from '../actions/actions.js';
-import { setAddressBook } from '../actions/actions.js';
 import io from 'socket.io-client';
 
 const socket = io.connect();
 const local = JSON.parse(localStorage.getItem('contacts'));
 
-function returnHeight() {
-  return Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 300;
+function returnHeight(offset = -300) {
+  return Math.max(document.documentElement.clientHeight, window.innerHeight || 0) + offset;
 }
 
-function returnWidth() {
-  const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 100;
+function returnWidth(offset = -100) {
+  const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) + offset;
   return width;
 }
 
@@ -50,22 +50,6 @@ const DisplayTable = React.createClass({
       <div className='tableHeader' onClick={this.sortBy.bind(null, cellDataKey)}>{label}</div>
     );
   },
-
-  // filterRowsBy: function() {
-  //   console.log('called filterRows');
-  //   const query = this.props.query;
-  //   const filtered = this.props.state.filter((value) => {
-  //     const firstName = value.get('firstName');
-  //     if (firstName && query) {
-  //       return (value.get('firstName').toLowerCase().indexOf(query.toLowerCase()) >= 0);
-  //     }
-  //     return true;
-  //   });
-  //
-  //   this.setState({
-  //     filteredRows: filtered.toJS(),
-  //   });
-  // },
 
   resize: function() {
     this.setState({

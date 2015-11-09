@@ -6,5 +6,8 @@
     "new-cap": 0,
     "camelcase": [2, {"properties": "always"}],
     "func-names": 0
+  },
+  "ecmaFeatures": {
+    "modules": true
   }
 }

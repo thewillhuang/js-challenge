@@ -1,4 +1,3 @@
-'use strict';
 import {expect} from 'chai';
 import {fromJS} from 'immutable';
 import chaiImmutable from 'chai-immutable';

@@ -8,6 +8,6 @@
     "strict": [2, "global"],
   },
   "ecmaFeatures": {
-    "modules": false,
+    "modules": true,
   }
 }
