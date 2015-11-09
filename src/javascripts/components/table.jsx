@@ -2,13 +2,21 @@ import React from 'react';
 import {Table, Column} from 'fixed-data-table';
 import { connect } from 'react-redux';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {
+  sortAscBy,
+  sortDecBy,
+} from '../actions/actions.js';
 
 function returnHeight() {
   return Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 300;
 }
 
 function returnWidth() {
-  return Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 100;
+  const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 100;
+  if (width <= 945) {
+    return 945;
+  }
+  return width;
 }
 
 const DisplayTable = React.createClass({
@@ -22,13 +30,14 @@ const DisplayTable = React.createClass({
     return {
       w: returnWidth(),
       h: returnHeight(),
-      filteredRows: this.props.state.toArray(),
+      sortBy: 'firstName',
+      sortDir: 1,
     };
   },
 
-  headerRender: function(label) {
+  headerRender: function(label, cellDataKey) {
     return (
-      <div className='tableHeader'>{label}</div>
+      <div className='tableHeader' onClick={this.sortBy.bind(null, cellDataKey)}>{label}</div>
     );
   },
 
@@ -55,9 +64,34 @@ const DisplayTable = React.createClass({
     });
   },
 
+  sortBy: function(key) {
+    console.log(key);
+    const keyMap = {
+      0: 'firstName',
+      1: 'lastName',
+      2: 'dob',
+      3: 'phone',
+      4: 'email',
+      5: 'notes',
+    };
+
+    if (this.state.sortDir === 1) {
+      this.setState({
+        sortDir: 0,
+      });
+      this.props.dispatch(sortAscBy(keyMap[key]));
+    } else {
+      this.setState({
+        sortDir: 1,
+      });
+      this.props.dispatch(sortDecBy(keyMap[key]));
+    }
+  },
+
   propTypes: {
     state: React.PropTypes.any.isRequired,
     query: React.PropTypes.string,
+    dispatch: React.PropTypes.func.isRequired,
   },
 
   rowGetter: function(rowIndex) {
@@ -65,6 +99,7 @@ const DisplayTable = React.createClass({
   },
 
   render() {
+    console.log(this.props);
     return (
       <div className='tableBody'>
         <Table
