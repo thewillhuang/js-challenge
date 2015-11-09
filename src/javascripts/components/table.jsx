@@ -18,9 +18,6 @@ function returnHeight() {
 
 function returnWidth() {
   const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 100;
-  if (width <= 945) {
-    return 945;
-  }
   return width;
 }
 
