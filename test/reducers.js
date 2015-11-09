@@ -9,7 +9,7 @@ import {
   addContact,
   updateContact,
   deleteContact,
-  // filterBy,
+  filterBy,
   setAddressBook,
   sortAscBy,
   sortDecBy,
@@ -39,43 +39,35 @@ describe('reducers', () => {
 
   it('setAddressBook action should reset the state to be as the same as the payload', () => {
     state = reducer(state, setAddressBook([
-      {test: 1, day: 'sunny', fName: 'william'},
+      {test: 1, day: 'sunny', firstName: 'william'},
       {test: 2, day: 'rainy'},
     ]));
 
     expect(state).to.equal(fromJS([
-      {test: 1, day: 'sunny', fName: 'william'},
+      {test: 1, day: 'sunny', firstName: 'william'},
       {test: 2, day: 'rainy'},
     ]));
   });
 
-  // it('filterBy action should filter the current state by name in addition to keeping the previous state', () => {
-  //   state = reducer(state, filterBy('william'));
-  //   const expectedSignature = fromJS([
-  //     {
-  //       test: 1,
-  //       day: 'sunny',
-  //       fName: 'william',
-  //       originalState: [
-  //         {test: 1, day: 'sunny', fName: 'william'},
-  //         {test: 2, day: 'rainy'},
-  //       ],
-  //     },
-  //   ]);
-  //   expect(state).to.equal(expectedSignature);
-  // });
-  //
+  it('filterBy action should filter the current state by name', () => {
+    state = reducer(state, filterBy('william'));
+    const expectedSignature = fromJS([
+      {
+        test: 1,
+        day: 'sunny',
+        firstName: 'william',
+      },
+    ]);
+    expect(state).to.equal(expectedSignature);
+  });
+
   // it('filterBy action should use the previous state to return the new filter result', () => {
   //   state = reducer(state, filterBy('william'));
   //   const expectedSignature = fromJS([
   //     {
   //       test: 1,
   //       day: 'sunny',
-  //       fName: 'william',
-  //       originalState: [
-  //         {test: 1, day: 'sunny', fName: 'william'},
-  //         {test: 2, day: 'rainy'},
-  //       ],
+  //       firstName: 'william',
   //     },
   //   ]);
   //   expect(state).to.equal(expectedSignature);
@@ -83,22 +75,22 @@ describe('reducers', () => {
 
   it('sortAscBy action should cause reducer to return an updated state', () => {
     state = reducer(state, setAddressBook([
-      {test: 1, day: 'sunny', fName: 'william'},
-      {test: 2, day: 'rainy', fName: 'leeroy'},
+      {test: 1, day: 'sunny', firstName: 'william'},
+      {test: 2, day: 'rainy', firstName: 'leeroy'},
     ]));
 
     state = reducer(state, sortAscBy('day'));
     expect(state).to.equal(fromJS([
-      {test: 2, day: 'rainy', fName: 'leeroy'},
-      {test: 1, day: 'sunny', fName: 'william'},
+      {test: 2, day: 'rainy', firstName: 'leeroy'},
+      {test: 1, day: 'sunny', firstName: 'william'},
     ]));
   });
 
   it('sortDecBy action should cause reducer to return an updated state', () => {
     state = reducer(state, sortDecBy('day'));
     expect(state).to.equal(fromJS([
-      {test: 1, day: 'sunny', fName: 'william'},
-      {test: 2, day: 'rainy', fName: 'leeroy'},
+      {test: 1, day: 'sunny', firstName: 'william'},
+      {test: 2, day: 'rainy', firstName: 'leeroy'},
     ]));
   });
 });

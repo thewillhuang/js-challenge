@@ -58,9 +58,9 @@ const DisplayTable = React.createClass({
   //   console.log('called filterRows');
   //   const query = this.props.query;
   //   const filtered = this.props.state.filter((value) => {
-  //     const firstName = value.get('fName');
+  //     const firstName = value.get('firstName');
   //     if (firstName && query) {
-  //       return (value.get('fName').toLowerCase().indexOf(query.toLowerCase()) >= 0);
+  //       return (value.get('firstName').toLowerCase().indexOf(query.toLowerCase()) >= 0);
   //     }
   //     return true;
   //   });
@@ -105,7 +105,6 @@ const DisplayTable = React.createClass({
 
   propTypes: {
     state: React.PropTypes.any.isRequired,
-    query: React.PropTypes.string,
     dispatch: React.PropTypes.func.isRequired,
   },
 

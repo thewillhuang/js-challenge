@@ -1,5 +1,5 @@
 import React from 'react';
-import Search from './searchBox.jsx';
+import {ConnectedSearch} from './searchBox.jsx';
 import AddButton from './addButton.jsx';
 import {ContactsTable} from './table.jsx';
 import {ConnectedModal} from './modal.jsx';
@@ -34,12 +34,6 @@ const Body = React.createClass({
     });
   },
 
-  handleSearchQueryChange: function(query) {
-    this.setState({
-      searchQuery: query,
-    });
-  },
-
   getInitialState: function() {
     return {
       modalDisplay: 'none',
@@ -54,9 +48,9 @@ const Body = React.createClass({
     // console.log(this.state);
     return (
       <div className='body'>
-        <Search handleSearchQueryChange={this.handleSearchQueryChange} searchMagColor={this.state.searchMagColor} color={this.state.searchColor}/>
+        <ConnectedSearch searchMagColor={this.state.searchMagColor} color={this.state.searchColor}/>
         <AddButton handleClick={this.handleAddButtonClick} color={this.state.addButtonColor}/>
-        <ContactsTable query={this.state.searchQuery}/>
+        <ContactsTable />
         <ConnectedModal display={this.state.modalDisplay} closeModal={this.closeModal} openModal={this.openModal}/>
       </div>
     );

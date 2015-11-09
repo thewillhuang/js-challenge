@@ -1,21 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { filterBy, setAddressBook } from '../actions/actions.js';
 
 const Search = React.createClass({
   propTypes: {
-    handleSearchQueryChange: React.PropTypes.func.isRequired,
     color: React.PropTypes.string.isRequired,
     searchMagColor: React.PropTypes.string.isRequired,
-  },
-
-  getInitialState: function() {
-    return {
-      value: '',
-    };
+    state: React.PropTypes.any.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
   },
 
   handleChange: function(event) {
-    this.props.handleSearchQueryChange(event.target.value);
+    const query = event.target.value;
+    if (query.length >= 1) {
+      this.props.dispatch(filterBy(event.target.value));
+    } else {
+      this.props.dispatch(setAddressBook(JSON.parse(localStorage.getItem('contacts'))));
+    }
   },
+
   render() {
     return (
       <div className='search'>
@@ -33,4 +36,8 @@ const Search = React.createClass({
   },
 });
 
-export default Search;
+function select(state) {
+  return {state};
+}
+
+export const ConnectedSearch = connect(select)(Search);

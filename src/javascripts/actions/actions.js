@@ -30,12 +30,12 @@ export function deleteContact(index) {
   };
 }
 
-// export function filterBy(query) {
-//   return {
-//     type: FILTER,
-//     query: query,
-//   };
-// }
+export function filterBy(query) {
+  return {
+    type: FILTER,
+    query: query,
+  };
+}
 
 export function sortAscBy(key) {
   return {
