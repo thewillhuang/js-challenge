@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {addContact} from '../actions/actions.js';
+import {addContact, setAddressBook} from '../actions/actions.js';
 
 function select(state) {
   return {state};
 }
+
+const local = JSON.parse(localStorage.getItem('contacts'));
 
 const Modal = React.createClass({
   propTypes: {
@@ -84,6 +86,12 @@ const Modal = React.createClass({
     }
     this.clearState();
     this.props.closeModal();
+    this.storeState();
+  },
+
+  handleDelete: function() {
+    this.props.dispatch(setAddressBook([]));
+    localStorage.clear();
   },
 
   handleKeyDown: function(event) {
@@ -97,6 +105,11 @@ const Modal = React.createClass({
     default:
       break;
     }
+  },
+
+  storeState: function() {
+    const state = this.props.state.toJS();
+    localStorage.setItem('contacts', JSON.stringify(state));
   },
 
   render() {
@@ -139,6 +152,7 @@ const Modal = React.createClass({
           <div className='modalFooter'>
             <hr/>
             <div className='modalSave' onClick={this.handleSubmit}><p>Save</p></div>
+            <div className='modalDelete' onClick={this.handleDelete}><p>Delete</p></div>
           </div>
         </div>
       </div>

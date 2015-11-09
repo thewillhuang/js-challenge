@@ -6,6 +6,9 @@ import {
   sortAscBy,
   sortDecBy,
 } from '../actions/actions.js';
+import { setAddressBook } from '../actions/actions.js';
+
+const local = JSON.parse(localStorage.getItem('contacts'));
 
 function returnHeight() {
   return Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 300;
@@ -24,6 +27,9 @@ const DisplayTable = React.createClass({
 
   componentDidMount: function() {
     window.onresize = this.resize;
+    if (local.length !== 0) {
+      this.props.dispatch(setAddressBook(JSON.parse(localStorage.getItem('contacts'))));
+    }
   },
 
   getInitialState: function() {

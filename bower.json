@@ -1,24 +1,24 @@
 {
-  "name": "Platform",
-  "version": "0.0.1",
-  "homepage": "https://github.com/lifespeed/lifespeed.web",
+  "name": "js-challenge",
+  "description": "### Purpose The purpose of this exercise is for you to demonstrate your ability to create a performant React application that both matches a mock (shown above) in features and functionality. We use this challenge to better understand your coding abilities and determine if you would be a good fit for an in-person interview.",
+  "main": "index.js",
   "authors": [
-    "william <will.h86@gmail.com>"
+    "thewillhuang"
   ],
-  "description": "Lifespeed platform",
-  "license": "MIT",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "client/bower_components",
-    "test",
-    "tests"
-  ],
+  "license": "ISC",
+  "homepage": "https://github.com/thewillhuang/js-challenge",
   "dependencies": {
     "font-awesome": "*",
     "simple-line-icons": "*",
     "normalize.css": "*"
-  }
+  },
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ]
 }
