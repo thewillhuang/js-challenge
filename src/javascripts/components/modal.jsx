@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {addContact, setAddressBook} from '../actions/actions.js';
+import io from 'socket.io-client';
+
+const socket = io.connect();
 
 function select(state) {
   return {state};
 }
-
-const local = JSON.parse(localStorage.getItem('contacts'));
 
 const Modal = React.createClass({
   propTypes: {
@@ -110,6 +111,7 @@ const Modal = React.createClass({
   storeState: function() {
     const state = this.props.state.toJS();
     localStorage.setItem('contacts', JSON.stringify(state));
+    socket.emit('update', {contacts: state});
   },
 
   render() {

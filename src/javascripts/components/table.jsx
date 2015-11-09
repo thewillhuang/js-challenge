@@ -7,7 +7,9 @@ import {
   sortDecBy,
 } from '../actions/actions.js';
 import { setAddressBook } from '../actions/actions.js';
+import io from 'socket.io-client';
 
+const socket = io.connect();
 const local = JSON.parse(localStorage.getItem('contacts'));
 
 function returnHeight() {
@@ -30,6 +32,10 @@ const DisplayTable = React.createClass({
     if (local) {
       this.props.dispatch(setAddressBook(JSON.parse(localStorage.getItem('contacts'))));
     }
+    const ctx = this;
+    socket.on('updated', function(data) {
+      ctx.props.dispatch(setAddressBook(data.contacts));
+    });
   },
 
   getInitialState: function() {
