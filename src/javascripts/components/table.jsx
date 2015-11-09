@@ -108,8 +108,6 @@ const DisplayTable = React.createClass({
     } else {
       sortDir = ' ↑';
     }
-    // console.log(this.props);
-    // console.log(this.state);
     return (
       <div className='tableBody'>
         <Table

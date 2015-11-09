@@ -57,7 +57,7 @@ const Body = React.createClass({
         <Search handleSearchQueryChange={this.handleSearchQueryChange} searchMagColor={this.state.searchMagColor} color={this.state.searchColor}/>
         <AddButton handleClick={this.handleAddButtonClick} color={this.state.addButtonColor}/>
         <ContactsTable query={this.state.searchQuery}/>
-        <ConnectedModal display={this.state.modalDisplay} closeModal={this.closeModal} close={this.closeModal}/>
+        <ConnectedModal display={this.state.modalDisplay} closeModal={this.closeModal} openModal={this.openModal}/>
       </div>
     );
   },

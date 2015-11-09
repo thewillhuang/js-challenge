@@ -10,13 +10,17 @@ const Modal = React.createClass({
   propTypes: {
     display: React.PropTypes.string.isRequired,
     closeModal: React.PropTypes.func.isRequired,
-    close: React.PropTypes.func.isRequired,
+    openModal: React.PropTypes.func.isRequired,
     state: React.PropTypes.any.isRequired,
     dispatch: React.PropTypes.func.isRequired,
   },
 
   componentDidMount: function() {
     window.addEventListener('keydown', this.handleKeyDown);
+  },
+
+  componentDidUpdate: function() {
+    this.firstName.focus();
   },
 
   componentWillUnmount: function() {
@@ -77,7 +81,11 @@ const Modal = React.createClass({
   },
 
   handleSubmit: function() {
-    this.props.dispatch(addContact(this.state));
+    if (this.state.firstName.length) {
+      this.props.dispatch(addContact(this.state));
+    } else {
+      this.props.openModal();
+    }
     this.clearState();
     this.props.closeModal();
   },
@@ -108,7 +116,7 @@ const Modal = React.createClass({
             <div className='labels'>First Name</div>
             <div className='labels'>Last Name</div>
             <div className='input'>
-              <input onChange={this.getFirstName} value={this.state.firstName}/>
+              <input onChange={this.getFirstName} value={this.state.firstName} ref={ref => {this.firstName = ref; }}/>
             </div>
             <div className='input'>
               <input onChange={this.getLastName} value={this.state.lastName} />
