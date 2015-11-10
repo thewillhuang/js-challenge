@@ -18,14 +18,15 @@ const Search = React.createClass({
 
   handleChange: function(event) {
     const query = event.target.value;
+    const queryLength = query.length;
     this.setState({
-      valueLength: query.length,
+      valueLength: queryLength,
     });
     if (query.length >= this.state.valueLength) {
-      this.props.dispatch(filterBy(event.target.value));
+      this.props.dispatch(filterBy(query));
     } else {
       this.props.dispatch(setAddressBook(JSON.parse(localStorage.getItem('contacts'))));
-      this.props.dispatch(filterBy(event.target.value));
+      this.props.dispatch(filterBy(query));
     }
   },
 
