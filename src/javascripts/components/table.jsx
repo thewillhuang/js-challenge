@@ -60,27 +60,19 @@ const DisplayTable = React.createClass({
 
   sortBy: function(key) {
     // console.log(key);
-    const keyMap = {
-      0: 'firstName',
-      1: 'lastName',
-      2: 'dob',
-      3: 'phone',
-      4: 'email',
-      5: 'notes',
-    };
 
     if (this.state.sortDir === 0) {
       this.setState({
         sortDir: 1,
         sortBy: key,
       });
-      this.props.dispatch(sortAscBy(keyMap[key]));
+      this.props.dispatch(sortAscBy(key));
     } else {
       this.setState({
         sortDir: 0,
         sortBy: key,
       });
-      this.props.dispatch(sortDecBy(keyMap[key]));
+      this.props.dispatch(sortDecBy(key));
     }
   },
 
@@ -90,7 +82,10 @@ const DisplayTable = React.createClass({
   },
 
   rowGetter: function(rowIndex) {
-    return this.props.state.get(rowIndex).toArray();
+    console.log('row index', rowIndex);
+    console.log(this.props.state.get(rowIndex).toJS());
+    // return this.props.state.get(rowIndex).toArray();
+    return this.props.state.get(rowIndex).toJS();
   },
 
   render() {
@@ -112,50 +107,50 @@ const DisplayTable = React.createClass({
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label={'First Name' + (this.state.sortBy === 0 ? sortDir : '')}
+          label={'First Name' + (this.state.sortBy === 'firstName' ? sortDir : '')}
           width={100}
           flexGrow={1}
-          dataKey={0}
+          dataKey='firstName'
         />
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label={'Last Name' + (this.state.sortBy === 1 ? sortDir : '')}
+          label={'Last Name' + (this.state.sortBy === 'lastName' ? sortDir : '')}
           width={100}
           flexGrow={1}
-          dataKey={1}
+          dataKey='lastName'
         />
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label={'Date of Birth' + (this.state.sortBy === 2 ? sortDir : '')}
+          label={'Date of Birth' + (this.state.sortBy === 'dob' ? sortDir : '')}
           width={80}
           flexGrow={1}
-          dataKey={2}
+          dataKey='dob'
         />
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label={'Phone Number' + (this.state.sortBy === 3 ? sortDir : '')}
+          label={'Phone Number' + (this.state.sortBy === 'phone' ? sortDir : '')}
           width={80}
           flexGrow={2}
-          dataKey={3}
+          dataKey='phone'
         />
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label={'Address' + (this.state.sortBy === 4 ? sortDir : '')}
+          label={'Address' + (this.state.sortBy === 'email' ? sortDir : '')}
           width={150}
           flexGrow={1}
-          dataKey={4}
+          dataKey='email'
         />
         <Column
           allowCellsRecycling
           headerRenderer={this.headerRender}
-          label={'Notes' + (this.state.sortBy === 5 ? sortDir : '')}
+          label={'Notes' + (this.state.sortBy === 'notes' ? sortDir : '')}
           width={200}
           flexGrow={3}
-          dataKey={5}
+          dataKey='notes'
         />
         </Table>
       </div>
