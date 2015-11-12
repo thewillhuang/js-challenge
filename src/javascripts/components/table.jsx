@@ -82,10 +82,10 @@ const DisplayTable = React.createClass({
   },
 
   rowGetter: function(rowIndex) {
-    console.log('row index', rowIndex);
-    console.log(this.props.state.get(rowIndex).toJS());
+    // console.log('row index', rowIndex);
+    // console.log(this.props.state.get(rowIndex).toJS());
     // return this.props.state.get(rowIndex).toArray();
-    return this.props.state.get(rowIndex).toJS();
+    return this.props.state.get(rowIndex).toObject();
   },
 
   render() {
